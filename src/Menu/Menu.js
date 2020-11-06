@@ -8,7 +8,7 @@ const MenuStyled = styled.div`
     height: 1000px;
 `
 
-function Menu(){
+function Menu({setOpenFood}){
     return (
     <div>
         <MenuStyled>
@@ -17,7 +17,11 @@ function Menu(){
         <h1>{subMenuName}</h1>
         <FoodGrid>    
             {foods.map(food => (
-          <Food img={food.img}>
+          <Food 
+            img={food.img} 
+            onClick={() => {
+              setOpenFood(food);
+          }}>
               <FoodLabel>
               {food.name}
               </FoodLabel>
