@@ -12,7 +12,9 @@ function Menu(){
     return (
     <div>
         <MenuStyled>
-        <h1>Domino's Favorite</h1>    
+        {Object.entries(foods).map(([subMenuName, foods]) => 
+        <>
+        <h1>{subMenuName}</h1>
         <FoodGrid>    
             {foods.map(food => (
           <Food img={food.img}>
@@ -22,6 +24,11 @@ function Menu(){
            </Food>  
         ))}
         </FoodGrid>
+        </>
+        
+        )}
+  
+
         </MenuStyled>
     </div>);
 }
