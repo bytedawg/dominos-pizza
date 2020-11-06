@@ -1,3 +1,3 @@
-const pizzaRed = "#f44336";
+const pizzaRed = "#006991";
 
 export default pizzaRed;
