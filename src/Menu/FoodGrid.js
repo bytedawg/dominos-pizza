@@ -12,10 +12,15 @@ export const Food = styled.div`
     background-position: center;
     background-size: cover;
     background-image: ${({img}) => `url(${img});` }
-    box-shadow: 0 0px 7px 2px grey;
+    transition-property: box-shadow;
+    filter:contrast(75%);
+    transition-duration: .1s;
+    box-shadow: 0px 0px 2px 0px grey;
     &:hover {
         cursor: pointer;
         opacity: 0.9;
+        filter: contrast(100%);
+        box-shadow: 0px 0px 10px 0px grey;
     }
 `
 
