@@ -25,9 +25,14 @@ const OrderContent = styled(DialogContent)`
 `;
 
 
-export function Order() {
-    return <OrderStyled>
+export function Order({orders}) {
+    return (
+    <OrderStyled>
+      {orders.length === 0 ? <OrderContent>Your Order is Awesome!</OrderContent> :
+    <div>Found {orders.length} orders</div>}
+
         <DialogContent>Your order is here</DialogContent>
         <DialogFooter><ConfirmButton>Checkout</ConfirmButton></DialogFooter>
     </OrderStyled >
+    )
 }
