@@ -6,19 +6,19 @@ import Menu from './Menu/Menu';
 import FoodDialog from './FoodDialog/FoodDialog';
 import GlobalStyle from './Styles/GlobalStyle';
 import {Order} from './Order/Order';
-
+import useOpenFood from './Hooks/useOpenFood';
 
 function App() {
-  const [openFood, setOpenFood] = useState();
+  const openFood = useOpenFood();
 
   return (
 <>
     <GlobalStyle />
-    <FoodDialog openFood={openFood} setOpenFood={setOpenFood}/>
+    <FoodDialog {...openFood}/>
     <Navbar />
     <Order/>
     <Banner/>
-    <Menu  setOpenFood = {setOpenFood}/>
+    <Menu  {...openFood}/>
 </>
   );
 }

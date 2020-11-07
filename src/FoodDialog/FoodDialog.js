@@ -79,7 +79,7 @@ function FoodDialog({ openFood, setOpenFood }) {
                         <DialogBannerName>{openFood.name}</DialogBannerName>
                     </DialogBanner>
                     <DialogContent>Diaglog content</DialogContent>
-                    <DialogFooter><ConfirmButton>Confirm</ConfirmButton></DialogFooter>
+                    <DialogFooter><ConfirmButton>Add to Order</ConfirmButton></DialogFooter>
                 </Dialog>
             </>
         ) : null
