@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { FoodLabel } from '../Menu/FoodGrid';
 import Title from '../Styles/title';
 import pizzaRed from '../Styles/color';
-import {formatPrice} from "../Data/PizzaData";
+import { formatPrice } from "../Data/PizzaData";
+import { QuantityInput } from "./QuantityInput";
+import {useQuantity} from "../Hooks/useQuantity";
 
 const Dialog = styled.div`
     width: 500px;
@@ -66,20 +68,21 @@ export const ConfirmButton = styled(Title)`
     background-color: ${pizzaRed}
 `;
 
-function FoodDialog({ openFood, setOpenFood, setOrders, orders }) {
+function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
+    const quantity = useQuantity(openFood && openFood.quantity);
     function close() {
         setOpenFood();
     }
     if (!openFood) return null;
 
-const order = {
-    ...openFood
-}
+    const order = {
+        ...openFood
+    }
 
-function addToOrder() {
-    setOrders([...orders, order]);
-    close();
-}
+    function addToOrder() {
+        setOrders([...orders, order]);
+        close();
+    }
 
     return (
         openFood ? (
@@ -89,12 +92,23 @@ function addToOrder() {
                     <DialogBanner img={openFood.img}>
                         <DialogBannerName>{openFood.name}</DialogBannerName>
                     </DialogBanner>
-                    <DialogContent>Diaglog content</DialogContent>
-        <DialogFooter><ConfirmButton onClick={addToOrder}>Add to Order: {formatPrice(openFood.price)}</ConfirmButton></DialogFooter>
+                    <DialogContent><QuantityInput {...quantity}/>
+                    </DialogContent>
+                    <DialogFooter>
+                        <ConfirmButton onClick={addToOrder}>
+                            Add to Order: {formatPrice(openFood.price)}
+                        </ConfirmButton>
+                    </DialogFooter>
                 </Dialog>
             </>
         ) : null
     );
+}
+
+
+function FoodDialog(props) {
+    if (!props.openFood) return null;
+    return <FoodDialogContainer {...props} />
 }
 
 export default FoodDialog;
