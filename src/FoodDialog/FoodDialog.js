@@ -46,7 +46,6 @@ const DialogBannerName = styled(FoodLabel)`
 `;
 
 export const DialogContent = styled.div`
-    overflow: auto;
     height: 100%;
     padding: 20px;
 `;
