@@ -60,13 +60,17 @@ export const DialogFooter = styled.div`
 export const ConfirmButton = styled(Title)`
     margin: 10px;
     color: #fff;
-    height: 20px;
+
     border-radius: 5px;
     text-align: center;
     width: 200px;
     cursor: pointer;
     background-color: ${pizzaRed}
 `;
+
+export function getPrice(order) {
+    return order.quantity * order.price;
+}
 
 function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
     const quantity = useQuantity(openFood && openFood.quantity);
@@ -76,13 +80,16 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
     if (!openFood) return null;
 
     const order = {
-        ...openFood
+        ...openFood,
+        quantity: quantity.value
     }
 
     function addToOrder() {
         setOrders([...orders, order]);
         close();
     }
+
+
 
     return (
         openFood ? (
@@ -96,7 +103,7 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
                     </DialogContent>
                     <DialogFooter>
                         <ConfirmButton onClick={addToOrder}>
-                            Add to Order: {formatPrice(openFood.price)}
+                            Add to Order: {formatPrice(getPrice(order))}
                         </ConfirmButton>
                     </DialogFooter>
                 </Dialog>
