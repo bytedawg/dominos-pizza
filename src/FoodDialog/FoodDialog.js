@@ -6,6 +6,7 @@ import pizzaRed from '../Styles/color';
 import { formatPrice } from "../Data/PizzaData";
 import { QuantityInput } from "./QuantityInput";
 import {useQuantity} from "../Hooks/useQuantity";
+import { Toppings } from './Toppings';
 
 const Dialog = styled.div`
     width: 500px;
@@ -98,7 +99,8 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
                     <DialogBanner img={openFood.img}>
                         <DialogBannerName>{openFood.name}</DialogBannerName>
                     </DialogBanner>
-                    <DialogContent><QuantityInput {...quantity}/>
+                    <DialogContent><QuantityInput quantity={quantity}/>
+                    <Toppings />
                     </DialogContent>
                     <DialogFooter>
                         <ConfirmButton onClick={addToOrder}>

@@ -55,7 +55,7 @@ export function Order({orders}) {
     <OrderContainer>Your order:</OrderContainer>{""}
     {orders.map(order => (
       <OrderContainer>
-        <OrderItem>
+        <OrderItem key={order.id}>
         <div>{order.quantity}</div>
           {order.name}
           <div>{formatPrice(getPrice(order))}</div>
