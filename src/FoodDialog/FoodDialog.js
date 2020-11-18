@@ -99,7 +99,7 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
                     <DialogBanner img={openFood.img}>
                         <DialogBannerName>{openFood.name}</DialogBannerName>
                     </DialogBanner>
-                    <DialogContent><QuantityInput quantity={quantity}/>
+                    <DialogContent><QuantityInput {...quantity}/>
                     <Toppings />
                     </DialogContent>
                     <DialogFooter>
